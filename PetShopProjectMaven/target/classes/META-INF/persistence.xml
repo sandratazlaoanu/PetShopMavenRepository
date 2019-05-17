@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+    version="2.0">
+ 
+    <persistence-unit name="PetShopProjectMaven">
+    
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>        
+        <class>model.Adresa</class>
+		<class>model.Angajat</class>
+		<class>model.AngajatDepartament</class>
+		<class>model.BonFiscal</class>
+		<class>model.BonProdus</class>
+		<class>model.Client</class>
+		<class>model.Departament</class>
+		<class>model.Furnizor</class>
+		<class>model.PetShop</class>
+		<class>model.Produs</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/petshopdb" />
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.connection.username" value="root" />
+            <property name="hibernate.connection.password" value="1q2w3e" />
+            <property name="hibernate.archive.autodetection" value="class" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hbm2ddl.auto" value="update" />
+        </properties>
+    </persistence-unit>
+</persistence>
