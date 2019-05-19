@@ -6,21 +6,16 @@ import java.sql.SQLException;
 import menu.MenuClass;
 
 /**
- * Hello world!
+ * MainClass for the app
  *
  */
 public class App {
-
 
 	public static void main(String[] args) throws NumberFormatException, IOException, SQLException {
 
 		MenuClass ob = new MenuClass();
 		ob.menu();
-		
-/*		AngajatController aC = new AngajatController();
-		
 
-		aC.createAngajat(17, "Kwon", "Sun", 1000);*/
 	}
 
 }

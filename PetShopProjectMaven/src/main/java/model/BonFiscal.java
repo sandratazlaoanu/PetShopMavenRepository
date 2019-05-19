@@ -17,15 +17,14 @@ import javax.persistence.TemporalType;
 @Table(name = "bonfiscal")
 public class BonFiscal {
 
-
 	@Id
-	@Column(name="idBonFiscal")
+	@Column(name = "idBonFiscal")
 	private int idBonFiscal;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data")
+	@Column(name = "data")
 	private Date data;
-	@Column(name="suma")
+	@Column(name = "suma")
 	private float suma;
 
 	// bi-directional many-to-one association to Client
@@ -38,6 +37,12 @@ public class BonFiscal {
 	private List<BonProdus> bonproduses;
 
 	public BonFiscal() {
+	}
+
+	public BonFiscal(int id, Date data, float suma) {
+		this.data = data;
+		this.idBonFiscal = id;
+		this.suma = suma;
 	}
 
 	public int getIdBonFiscal() {

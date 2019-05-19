@@ -12,23 +12,31 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@Table(name="bonprodus")
+@Table(name = "bonprodus")
 public class BonProdus {
 	@Id
-	@Column(name="index")
+	@Column(name = "index")
 	private int index;
 
-	//bi-directional many-to-one association to BonFiscal
+	// bi-directional many-to-one association to BonFiscal
 	@ManyToOne
-	@JoinColumn(name="idBonFiscal")
+	@JoinColumn(name = "idBonFiscal")
 	private BonFiscal bonFiscal;
 
-	//bi-directional many-to-one association to Produs
+	// bi-directional many-to-one association to Produs
 	@ManyToOne
-	@JoinColumn(name="idProdus")
+	@JoinColumn(name = "idProdus")
 	private Produs produs;
 
 	public BonProdus() {
+	}
+
+	public BonProdus(int index, BonFiscal bonFiscal, Produs produs) {
+
+		this.index = index;
+		this.bonFiscal = bonFiscal;
+		this.produs = produs;
+
 	}
 
 	public int getIndex() {
@@ -54,11 +62,10 @@ public class BonProdus {
 	public void setProdus(Produs produs) {
 		this.produs = produs;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "BonProdus " + index + " " + bonFiscal + " " + produs;
 	}
-
 
 }

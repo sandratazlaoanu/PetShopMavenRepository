@@ -48,6 +48,14 @@ public class PetShop{
 	public PetShop() {
 	}
 
+	public PetShop(int id, String denumire, String telefon, String email, Adresa adresa) {
+		this.idPetShop = id;
+		this.nume = denumire;
+		this.nrTelefon = telefon;
+		this.email = email;
+		this.adresa = adresa;
+	}
+	
 	public int getIdPetShop() {
 		return this.idPetShop;
 	}
@@ -156,8 +164,8 @@ public class PetShop{
 	
 	@Override
 	public String toString() {
-		return "PetShop " + idPetShop + "Email: " + email + "NrTelefon: " + nrTelefon + "Nume: " + nume
-				+ "Adresa:" + adresa;
+		return "PetShop " + idPetShop + " " + email + " " + nrTelefon + " " + nume
+				+ " " + adresa;
 	}
 
 }

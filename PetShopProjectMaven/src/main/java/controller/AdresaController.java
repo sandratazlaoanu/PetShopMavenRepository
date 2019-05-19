@@ -1,20 +1,69 @@
 package controller;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.util.List;
 
+import daoImpl.AdresaDao;
+import helper.DatabaseHelper;
 import model.Adresa;
 
+/**
+ * @author Sandra Util functions for Adresa
+ */
 public class AdresaController {
 
-	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("PetShopProjectMaven");
-	private static EntityManager em = emf.createEntityManager();;
+	private DatabaseHelper dh = DatabaseHelper.getInstance();
 
-	public void createAdresa(int zip, String judet, String oras, String strada, int numar) {
-		em.getTransaction().begin();
-		Adresa adresa = new Adresa(zip, judet, oras, strada, numar);
-		em.persist(adresa);
-		em.getTransaction().commit();
+	public void printList() {
+
+		AdresaDao dao = new AdresaDao(dh);
+		List<Adresa> list = dao.getAll();
+
+		for (Adresa a : list) {
+			System.out.println(a.toString());
+		}
+	}
+
+	public void create(int zip, String judet, String oras, String strada, int numar) {
+		AdresaDao dao = new AdresaDao(dh);
+		if (dao.get(zip).isPresent() == true) {
+			System.out.println("Already exists..");
+		}
+		Adresa newObj = new Adresa();
+		newObj.setZip(zip);
+		newObj.setJudet(judet);
+		newObj.setOras(oras);
+		newObj.setStrada(strada);
+		newObj.setNumar(numar);
+		dao.create(newObj);
+	}
+
+	public void search(int zip) {
+
+		AdresaDao a = new AdresaDao(dh);
+		System.out.println(a.findById(zip));
+	}
+
+	public void update(int zip, String judet, String oras, String strada, int numar) {
+		AdresaDao dao = new AdresaDao(dh);
+		Adresa toFind = dao.findById(zip);
+		Adresa newObj = new Adresa();
+		newObj.setZip(zip);
+		newObj.setJudet(judet);
+		newObj.setOras(oras);
+		newObj.setStrada(strada);
+		newObj.setNumar(numar);
+
+		dao.update(toFind, newObj);
+
+	}
+
+	public void delete(int zip) {
+
+		AdresaDao dao = new AdresaDao(dh);
+		Adresa toFind = dao.findById(zip);
+		if (toFind == null) {
+			System.out.println("Adresa not found.");
+		}
+		dao.delete(toFind);
 	}
 }

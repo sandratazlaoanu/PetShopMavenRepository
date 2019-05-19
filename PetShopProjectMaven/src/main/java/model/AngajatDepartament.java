@@ -14,25 +14,32 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@Table(name="angajatdepartament")
+@Table(name = "angajatdepartament")
 public class AngajatDepartament implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="index")
+	@Column(name = "index")
 	private int index;
 
-	//bi-directional many-to-one association to Angajat
+	// bi-directional many-to-one association to Angajat
 	@ManyToOne
-	@JoinColumn(name="idAngajat")
+	@JoinColumn(name = "idAngajat")
 	private Angajat angajat;
 
-	//bi-directional many-to-one association to Departament
+	// bi-directional many-to-one association to Departament
 	@ManyToOne
-	@JoinColumn(name="idDepartament")
+	@JoinColumn(name = "idDepartament")
 	private Departament departament;
 
 	public AngajatDepartament() {
+	}
+
+	public AngajatDepartament(int index, Angajat angajat, Departament departament) {
+
+		this.index = index;
+		this.angajat = angajat;
+		this.departament = departament;
 	}
 
 	public int getIndex() {
@@ -58,7 +65,7 @@ public class AngajatDepartament implements Serializable {
 	public void setDepartament(Departament departament) {
 		this.departament = departament;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "AngajatDepartament " + index + " " + angajat + " " + departament;

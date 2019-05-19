@@ -12,16 +12,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "produs")
-public class Produs{
+public class Produs {
 
 	@Id
-	@Column(name="idProdus")
+	@Column(name = "idProdus")
 	private int idProdus;
-	@Column(name="cantitate")
+	@Column(name = "cantitate")
 	private int cantitate;
-	@Column(name="denumire")
+	@Column(name = "denumire")
 	private String denumire;
-	@Column(name="pret")
+	@Column(name = "pret")
 	private float pret;
 
 	// bi-directional many-to-one association to Bonprodus
@@ -34,6 +34,13 @@ public class Produs{
 	private Furnizor furnizor;
 
 	public Produs() {
+	}
+
+	public Produs(int id, int cantitate, String denumire, float pret) {
+		this.idProdus = id;
+		this.cantitate = cantitate;
+		this.denumire = denumire;
+		this.pret = pret;
 	}
 
 	public int getIdProdus() {

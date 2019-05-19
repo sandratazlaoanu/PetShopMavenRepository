@@ -56,7 +56,7 @@ public class MenuClass {
 					String strada = reader.readLine();
 					System.out.println("Numar: ");
 					int numar = Integer.parseInt(reader.readLine());
-					adresaController.createAdresa(zip, judet, oras, strada, numar);
+					adresaController.create(zip, judet, oras, strada, numar);
 					break;
 				case 2:
 					System.out.println("Datele: ");
@@ -71,17 +71,18 @@ public class MenuClass {
 					String stradaToUpdate = reader.readLine();
 					System.out.println("Numar: ");
 					int numarToUpdate = Integer.parseInt(reader.readLine());
-					//adresaController.update(zipToUpdate, judetToUpdate, orasToUpdate, stradaToUpdate, numarToUpdate);
+					adresaController.update(zipToUpdate, judetToUpdate, orasToUpdate, stradaToUpdate,
+							numarToUpdate);
 					break;
 
 				case 3:
 					System.out.println("Datele: ");
 					System.out.println("Id: ");
 					int zipToDelete = Integer.parseInt(reader.readLine());
-					//adresaController.delete(zipToDelete);
+					adresaController.delete(zipToDelete);
 					break;
 				case 4:
-					//adresaController.printList();
+					adresaController.printList();
 				}
 
 				break;
@@ -106,7 +107,7 @@ public class MenuClass {
 					System.out.println("Pet Shop: ");
 					int idPetShopClient = Integer.parseInt(reader.readLine());
 
-					clientController.createClient(idClient, numeClient, prenumeClient, idPetShopClient);
+					clientController.create(idClient, numeClient, prenumeClient, idPetShopClient);
 
 					System.out.println("Doriti sa setati si un bon fiscal? ");
 					String chooseBonFiscal = reader.readLine();
@@ -121,7 +122,7 @@ public class MenuClass {
 						Date data = Date.valueOf(reader.readLine());
 						System.out.println("Suma: ");
 						float suma = Float.parseFloat(reader.readLine());
-						//bfController.create(idBonFiscal, data, suma, idClient);
+						bfController.create(idBonFiscal, data, suma, idClient);
 						break;
 					}
 					break;
@@ -133,18 +134,21 @@ public class MenuClass {
 					String numeNouClient = reader.readLine();
 					System.out.println("Prenume: ");
 					String prenumeNouClient = reader.readLine();
-					//clientController.update(idClientToUpdate, numeNouClient, prenumeNouClient);
+					System.out.println("Id PetShop");
+					int PetShopClient = Integer.parseInt(reader.readLine());
+
+					clientController.update(idClientToUpdate, numeNouClient, prenumeNouClient, PetShopClient);
 					break;
 
 				case 3:
 					System.out.println("Datele: ");
 					System.out.println("Id: ");
 					int idClientToDelete = Integer.parseInt(reader.readLine());
-					//clientController.delete(idClientToDelete);
+					clientController.delete(idClientToDelete);
 					break;
 
 				case 4:
-					//clientController.printList();
+					clientController.printList();
 				}
 
 				break;
@@ -169,7 +173,7 @@ public class MenuClass {
 					float suma = Float.parseFloat(reader.readLine());
 					System.out.println("Alegeti un client: ");
 					int idClient = Integer.parseInt(reader.readLine());
-					//bfController.create(idBonFiscal, data, suma, idClient);
+					bfController.create(idBonFiscal, data, suma, idClient);
 					break;
 				case 2:
 					System.out.println("Datele: ");
@@ -179,17 +183,20 @@ public class MenuClass {
 					Date dataToUpdate = Date.valueOf(reader.readLine());
 					System.out.println("Suma: ");
 					Float sumaToUpdate = Float.parseFloat(reader.readLine());
-					//bfController.update(idBonFiscalToUpdate, dataToUpdate, sumaToUpdate);
+					System.out.println("Client to update: ");
+					int clientToUpdate = Integer.parseInt(reader.readLine());
+
+					bfController.update(idBonFiscalToUpdate, dataToUpdate, sumaToUpdate, clientToUpdate);
 					break;
 
 				case 3:
 					System.out.println("Datele: ");
 					System.out.println("Id: ");
 					int idBonFiscalToDelete = Integer.parseInt(reader.readLine());
-					//bfController.delete(idBonFiscalToDelete);
+					bfController.delete(idBonFiscalToDelete);
 					break;
 				case 4:
-					//bfController.printList();
+					bfController.printList();
 				}
 				break;
 			}

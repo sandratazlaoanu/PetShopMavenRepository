@@ -8,21 +8,20 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 /**
  * The persistent class for the departament database table.
  * 
  */
 @Entity
 @Table(name = "departament")
-public class Departament{
+public class Departament {
 
 	@Id
-	@Column(name="idDepartament")
+	@Column(name = "idDepartament")
 	private int idDepartament;
-	@Column(name="denumire")
+	@Column(name = "denumire")
 	private String denumire;
-	@Column(name="nrRaioane")
+	@Column(name = "nrRaioane")
 	private int nrRaioane;
 
 	// bi-directional many-to-one association to Angajatdepartament
@@ -30,6 +29,12 @@ public class Departament{
 	private List<AngajatDepartament> angajatDepartaments;
 
 	public Departament() {
+	}
+
+	public Departament(int id, String denumire, int nrRaioane) {
+		this.idDepartament = id;
+		this.denumire = denumire;
+		this.nrRaioane = nrRaioane;
 	}
 
 	public int getIdDepartament() {
